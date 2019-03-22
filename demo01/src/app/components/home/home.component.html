@@ -1,0 +1,36 @@
+<h3>{{title}}</h3>
+<div class="home_title">主页</div>
+<div class="home_time">2019年3月22日</div>
+<br>
+<hr>
+<div class="billlist">
+    <div>账单详情</div>
+    <div>姓名：{{userInfo.name}}</div>
+    <div>类型：{{userInfo.bill}}</div>
+    <div>应还金额：{{userInfo.payNum}}元</div>
+    <button (click)="handlePayClick">还款</button>
+</div>
+
+<ul>
+    <li *ngFor="let name of lsit">{{name}}</li>
+</ul>
+
+<ol>
+    <li *ngFor="let item of userlist">
+        <div>姓名：{{item.username}}</div>
+        <div>年龄：{{item.age}}</div>
+    </li>
+</ol>
+
+
+<div>
+    <div *ngFor="let item of carlist">
+        <h2>{{item.username}}</h2>
+        <ol>
+            <li *ngFor="let detail of item.list">
+                <div>车型：{{detail.name}}</div>
+                <div>价格：{{detail.price}}万元</div>
+            </li>
+        </ol>
+    </div>
+</div>
