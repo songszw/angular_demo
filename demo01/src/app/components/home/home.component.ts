@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
   handlePayClick(){
-    console.log('aaa')
+    this.userInfo['payNum']='0'
   }
 
 }

@@ -1,0 +1,50 @@
+<p>
+  header works!
+</p>
+<img src="assets/images/01.png" alt="">
+<img [src]="picUrl" alt="">
+<hr>
+<ul>
+  <li *ngFor="let item of headerlist; let key=index;">
+    {{key}}----{{item.title}}
+  </li>
+</ul>
+<div class="flagBtn" (click)="ngFlagClick()">revers click</div>
+<div *ngIf="flag">
+  <img src="assets/images/01.png" alt="">
+</div>
+<div *ngIf="!flag">
+  <img src="assets/images/02.png" alt="">
+</div>
+
+<!-- 1订单待支付，2订单已支付，3代发货，4已收货，5退款 -->
+<span [ngSwitch]="orderStatus">
+<p *ngSwitchCase="1">
+  订单待支付
+</p>
+<p *ngSwitchCase="2">
+  订单已支付
+</p> 
+<p *ngSwitchCase="2">
+  代发货
+</p>
+<p *ngSwitchCase="2">
+  已收货
+</p>
+<p *ngSwitchCase="2">
+  退款
+</p>
+<p *ngSwitchDefault>
+  其他
+</p>
+</span>
+<button (click)="ngCurrentTime()">current time</button>
+<div>
+  当前事件： {{today|date:'yyyy/MM-dd HH:mm:ss'}}
+</div>
+
+<br>
+<input type="text" [(ngModel)]="keywords">
+{{keywords}}
+
+<button (click)="ngChangeKeyword()">change keyword</button>
