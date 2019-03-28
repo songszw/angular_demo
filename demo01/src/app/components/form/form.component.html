@@ -1,0 +1,27 @@
+<h3>信息统计</h3>
+<ul>
+  <li> <span>姓名：</span> <input type="text" [(ngModel)]="dataInfo.username"></li>
+  <li> 
+    <span>性别：</span> 
+    <input type="radio" value="1" [(ngModel)]="dataInfo.sex" name="sex" id="sex1"><label for="sex1"> 男</label>
+    <input type="radio" value="2" [(ngModel)]="dataInfo.sex" name="sex" id="sex2"><label for="sex2"> 女</label>
+  </li>
+  <li> 
+    <span>居住城市：</span> 
+    <select name="city" id="city" [(ngModel)]="dataInfo.city">
+      <option value="{{item}}"  *ngFor="let item of dataInfo.citylist">{{item}}</option>
+    </select>
+  </li>
+  <li> 
+    <span> 爱好：</span>
+    <span class="hobby" *ngFor="let item of dataInfo.hobby">
+      <input type="checkbox" [(ngModel)]="item.checked" [id]="item.title">
+      <label [for]="item.title">{{item.title}}</label>
+    </span>
+  </li>
+  <li> 
+    <span class="remark">备注：</span>
+    <textarea name="remark" [(ngModel)]="dataInfo.remark" id="remark" cols="20" rows="6"></textarea>
+  </li>
+  <button (click)="ngSubmitClick()">提交</button>
+</ul>
