@@ -12,7 +12,7 @@
 <div class="container">
   <ul>
     <li *ngFor="let item of todoList;let key=index" [ngClass]="{'active': item.status}">
-      <input type="checkbox" [(ngModel)]="item.status" >
+      <input type="checkbox" [(ngModel)]="item.status" (change)="nginputchange(item)">
       <p (click)="ngChangeClick(key)">{{item.title}}</p>
       <span (click)="ngDelete(key)">X</span>
     </li>

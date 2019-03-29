@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
+import { StorageService } from './services/storage.service'
 // 根组件
 import { AppComponent } from './app.component';
 import { NewsComponent } from './components/news/news.component';
@@ -26,7 +27,7 @@ import { TodolistComponent } from './components/todolist/todolist.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [], // 配置项目所需要的服务
+  providers: [StorageService], // 配置项目所需要的服务
   bootstrap: [AppComponent] // 指定应用的主视图（根组件），通过引导根app module来启动应用，一般是根组件
 })
 

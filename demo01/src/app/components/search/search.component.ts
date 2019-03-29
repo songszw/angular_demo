@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../../services/storage.service'
 
 @Component({
   selector: 'app-search',
@@ -8,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
   public searchVal:string=''
   public historyList:any[]=[]
-  constructor() { }
+  constructor(public storage:StorageService) { }
   ngOnInit() {
+    if(this.storage.get('searchlist')){
+      this.historyList = this.storage.get('searchlist')
+    }
   }
   ngSearchClick(){
     if(this.searchVal){
@@ -17,16 +21,20 @@ export class SearchComponent implements OnInit {
         this.historyList.push(this.searchVal)
       }
       this.searchVal=''
+      this.storage.set('searchlist',this.historyList)
     }
   }
   ngDeleteClick(key){
     this.historyList.splice(key,1)
+    this.storage.set('searchlist',this.historyList)
   }
   ngSearchAgain(item){
     this.searchVal = item
   }
   keyup(event){
-    console.log(event)
+    if(event.keyCode == 13){
+      this.ngSearchClick()
+    }
   }
 
 
