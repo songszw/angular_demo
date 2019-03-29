@@ -1,0 +1,27 @@
+<div class="header">
+  <div class="header_title">
+    <p>ToDoList</p>
+    <input 
+      type="text" 
+      placeholder="添加ToDo"
+      [(ngModel)]="todoVal"
+      (keyup)="ngKeyUp($event)"
+    >
+  </div>
+</div>
+<div class="container">
+  <ul>
+    <li *ngFor="let item of todoList;let key=index" [ngClass]="{'active': item.status}">
+      <input type="checkbox" [(ngModel)]="item.status" >
+      <p (click)="ngChangeClick(key)">{{item.title}}</p>
+      <span (click)="ngDelete(key)">X</span>
+    </li>
+  </ul>
+  <div class="deleteAll" *ngIf="todoList.length">
+    <button (click)="ngDeleteAll()">清空</button>
+  </div>
+</div>
+<div class="mask_container" [hidden]="!maskstatus">
+  <span class="msdk_close" (click)="closeMask()">X</span>
+  该内容已经存在
+</div>

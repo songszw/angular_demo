@@ -25,6 +25,9 @@ export class SearchComponent implements OnInit {
   ngSearchAgain(item){
     this.searchVal = item
   }
+  keyup(event){
+    console.log(event)
+  }
 
 
 }

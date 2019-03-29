@@ -14,11 +14,12 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
 import { SearchComponent } from './components/search/search.component';
+import { TodolistComponent } from './components/todolist/todolist.component';
 
 // @NgModule装饰器，@NgModule接受一个元数据对象，告诉angular如何编译和启动应用
 @NgModule({
   declarations: [ // 配置当前项目运行的组件
-    AppComponent, NewsComponent, HomeComponent, HeaderComponent, FormComponent, SearchComponent
+    AppComponent, NewsComponent, HomeComponent, HeaderComponent, FormComponent, SearchComponent, TodolistComponent
   ],
   imports: [ // 配置当前模块运行依赖的其他模块
     BrowserModule,

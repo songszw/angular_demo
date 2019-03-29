@@ -1,6 +1,6 @@
 <h3>保存搜索历史</h3>
 <div class="search_container">
-  <input type="text" [(ngModel)]="searchVal">
+  <input type="text" (keyup)='keyup($event)'  [(ngModel)]="searchVal">
   <button (click)="ngSearchClick()">搜索</button>
   <div class="history">
     <span  *ngFor="let item of historyList; let key=index" (click)="ngSearchAgain(item)">{{item}} <strong (click)="ngDeleteClick(key)">x</strong> </span>
