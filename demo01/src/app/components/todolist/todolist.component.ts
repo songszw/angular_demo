@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService } from '../../services/storage.service'
 @Component({
   selector: 'app-todolist',
@@ -15,6 +15,8 @@ export class TodolistComponent implements OnInit {
 
   constructor(public storage:StorageService) { 
   }
+
+  @ViewChild('asider') asider:any
 
   ngOnInit() {
     if(this.storage.get('todolist')){
@@ -61,5 +63,16 @@ export class TodolistComponent implements OnInit {
   ngDelete(index){
     this.todoList.splice(index,1)
     this.storage.set('todolist',this.todoList)
+  }
+  ngAfterViewInit() {
+    // let box1:any = document.getElementsByClassName('box1')[0]
+    // console.log(box1)
+    // box1.style.color = 'red'
+    // this.asider.ngAsiderClick()
+
+    // this.asider.showAsider()
+  }
+  ngAsiderClick(){
+    this.asider.ngAsiderClick()
   }
 }

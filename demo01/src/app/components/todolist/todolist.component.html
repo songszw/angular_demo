@@ -1,3 +1,4 @@
+<app-asider #asider></app-asider>
 <div class="header">
   <div class="header_title">
     <p>ToDoList</p>
@@ -7,6 +8,7 @@
       [(ngModel)]="todoVal"
       (keyup)="ngKeyUp($event)"
     >
+    <span class="asiderBtn" (click)="ngAsiderClick()"></span>
   </div>
 </div>
 <div class="container">
@@ -24,4 +26,7 @@
 <div class="mask_container" [hidden]="!maskstatus">
   <span class="msdk_close" (click)="closeMask()">X</span>
   该内容已经存在
+</div>
+<div *ngIf="todoList.length" class="box1">
+  你好丶我姓宋
 </div>
