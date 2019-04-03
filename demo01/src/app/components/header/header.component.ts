@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() homeMsg:string
   @Input() newsMsg:string
+  @Input() homerun:any
 
   public picUrl = 'https://www.baidu.com/img/bd_logo1.png'
   
@@ -35,20 +36,26 @@ export class HeaderComponent implements OnInit {
   public keywords:string='this is the default value'
 
   constructor() { 
-    console.log('aaa',this.today)
+    // console.log('aaa',this.today)
   }
 
   ngOnInit() {
   }
-  ngFlagClick(){
-    this.flag=!this.flag
-    console.log('aaaaa')
-  }
-  ngCurrentTime(){
-    this.today = new Date()
-  }
-  ngChangeKeyword(){
-    this.keywords = String(new Date())
+  // ngFlagClick(){
+  //   this.flag=!this.flag
+  //   // console.log('aaaaa')
+  // }
+  // ngCurrentTime(){
+  //   this.today = new Date()
+  // }
+  // ngChangeKeyword(){
+  //   this.keywords = String(new Date())
+  // }
+  ngRunClick(){
+    // this.ngHomeRun()  
+    // console.log(this.homerun.ngHomeRun())
+    this.homerun.ngHomeRun()
+    console.log('正在调用父组件方法')
   }
 
 }

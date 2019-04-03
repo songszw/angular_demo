@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NewsComponent implements OnInit {
 
   public newsMsg:string='这是news的内容'
+  
   constructor() { }
 
   ngOnInit() {
