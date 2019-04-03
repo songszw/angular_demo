@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { stringify } from '@angular/compiler/src/util';
 
 @Component({
@@ -8,8 +8,12 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() homeMsg:string
+  @Input() newsMsg:string
+
   public picUrl = 'https://www.baidu.com/img/bd_logo1.png'
   
+
   public headerlist:any[]=[
     {
       'title':'新闻'

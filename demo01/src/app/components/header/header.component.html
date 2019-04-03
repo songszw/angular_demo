@@ -1,6 +1,7 @@
-<p>
+<!-- <p>
   header works!
 </p>
+
 <img src="assets/images/01.png" alt="">
 <img [src]="picUrl" alt="">
 <hr>
@@ -16,8 +17,6 @@
 <div *ngIf="!flag">
   <img src="assets/images/02.png" alt="">
 </div>
-
-<!-- 1订单待支付，2订单已支付，3代发货，4已收货，5退款 -->
 <span [ngSwitch]="orderStatus">
 <p *ngSwitchCase="1">
   订单待支付
@@ -47,4 +46,5 @@
 <input type="text" [(ngModel)]="keywords">
 {{keywords}}
 
-<button (click)="ngChangeKeyword()">change keyword</button>
+<button (click)="ngChangeKeyword()">change keyword</button> -->
+<div class="header">this is header----{{homeMsg}}{{newsMsg}}</div>

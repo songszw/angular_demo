@@ -73,5 +73,8 @@ export class HomeComponent implements OnInit {
   handlePayClick(){
     this.userInfo['payNum']='0'
   }
+  ngHomeRun(){
+    console.log('this is home run')
+  }
 
 }
