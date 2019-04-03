@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { StorageService} from '../../services/storage.service'
+import { CommonService } from 'src/app/services/common.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.styl']
 })
 export class HomeComponent implements OnInit {
+  
+  @ViewChild('header') header:any
+  @ViewChild('mybox') mybox:any
   public title:string = 'this is home page'
 
   public userInfo:object = {
@@ -66,12 +70,28 @@ export class HomeComponent implements OnInit {
       ]
     }
   ]
-  constructor() { }
+  constructor(public storage:StorageService, public common:CommonService ) { }
+  ngAfterViewInit(){
+    // console.log('父组件获取子组件',this.header)
+    // console.log(this.header.nativeElement)
+    let box:any = document.getElementsByClassName('wahaha')[0]
+    console.log('box',box.innerHTML)
+    // console.log('aaabbb',this.mybox.nativeElement)
+  }
+  ngGetHeader(){
+    this.header.run()
+  }
 
   ngOnInit() {
   }
   handlePayClick(){
     this.userInfo['payNum']='0'
+  }
+  handleStorageClick(){
+    console.log('aaaaaa')
+    console.log(
+      this.storage.commonTitle='102'
+    )
   }
   ngHomeRun(){
     console.log('this is home run')

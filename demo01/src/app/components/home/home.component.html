@@ -1,15 +1,18 @@
-<app-header [homeMsg]="title" [homerun]='this' ></app-header>
+<app-header [homeMsg]="title" [homerun]='this' #header></app-header>
 <h3>{{title}}</h3>
-<div class="home_title">主页</div>
+<div>commonname:{{common.name}}</div>
+<div class="home_title" (click)="ngGetHeader()">主页</div>
 <div class="home_time">2019年3月22日</div>
 <br>
 <hr>
 <div class="billlist">
+    <div>编号-{{storage.commonTitle}}</div>
     <div>账单详情</div>
     <div>姓名：{{userInfo.name}}</div>
     <div>类型：{{userInfo.bill}}</div>
     <div>应还金额：{{userInfo.payNum}}元</div>
     <button (click)="handlePayClick()">还款</button>
+    <button (click)="handleStorageClick()">点击</button>
 </div>
 
 <ul>
@@ -22,7 +25,6 @@
         <div>年龄：{{item.age}}</div>
     </li>
 </ol>
-
 
 <div>
     <div *ngFor="let item of carlist">

@@ -57,5 +57,8 @@ export class HeaderComponent implements OnInit {
     this.homerun.ngHomeRun()
     console.log('正在调用父组件方法')
   }
+  run(){
+    console.log('这是header里面的方法')
+  }
 
 }
