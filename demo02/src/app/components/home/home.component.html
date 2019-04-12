@@ -1,0 +1,39 @@
+<header class="index_header">
+			<div class="hlist">
+				<img src="assets/images/rexiao.png"/>
+				<p>热销榜</p>				
+			</div>
+			
+			<div class="hlist">
+				<img src="assets/images/caidan.png" />
+				<p>点过的菜</p>				
+			</div>
+			<div class="hlist">
+				
+				<img src="assets/images/sousuo.png"/>
+				<p>搜你喜欢</p>				
+			</div>
+			
+		</header>			
+		<div class="content">
+			<div class="item" *ngFor="let item of data">
+				<h3 class="item_cate">{{item.title}}</h3>
+				<ul class="item_list">
+					<li *ngFor="let list of item.list">	
+						<div class="inner">
+							<a [routerLink]="[ '/project', list._id]">
+								<img [src]="domain+list.img_url" />
+								<p class="title">{{list.title}}</p>						
+							</a>
+							<p class="price">￥{{list.price}}</p>
+						</div>		
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<div class="bg" id="bg">
+			
+			
+		</div>
