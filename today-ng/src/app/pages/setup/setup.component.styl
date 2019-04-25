@@ -1,8 +1,46 @@
 @import '../../../assets/common/variables.styl'
 .setup
+  display flex
+  justify-content center
+  align-items center
   position fixed
   left 0
   right 0
   top 0
   bottom 0
   background $bg1
+  .wrapper
+    display flex
+    min-width 300px
+    max-width 400px
+    width 30vw
+    height 60vw
+    min-height 400px
+    max-height 420px
+    border-radius 5px
+    background #ffffff
+    align-items center
+    flex-direction column
+    padding 40px 30px 10px
+    .logo-img
+      width 120px
+      height 120px
+      flex 0 0 120px
+    .text-wrapper
+      margin 10px 0
+      height 60px
+      line-height 60px
+      justify-content center
+      text-align center
+      h1
+        font-size 24px
+        font-style italic
+        color $gray-text
+    button
+      width 100%
+      margin-top 20px
+    .copyright
+      color $gray-text
+      font-size 12px
+      line-height 25px
+      margin-top 30px

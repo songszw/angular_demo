@@ -1,3 +1,11 @@
 <div class="setup">
-  a
+  <div class="wrapper">
+    <img class="logo-img" src="./assets/img/logo.png" alt="">
+    <div class="text-wrapper">
+      <h1>Today</h1>
+    </div>
+    <input [(ngModel)]="username" nz-input placeholder="请输入想要的用户名" nzSize="default" />
+    <button nz-button nzType="primary" [disabled]='!username' (click)="login()">确定</button>
+    <div class="copyright">Copyright &copy; 2019 Jet Song</div>
+  </div>
 </div>
