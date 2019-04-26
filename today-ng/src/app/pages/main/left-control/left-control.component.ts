@@ -18,6 +18,6 @@ export class LeftControlComponent implements OnInit {
   }
   handleOpenAddList() {
     //调用子组件list中的打开添加列表方法
-    this.ListComponent.openAddList()
+    this.ListComponent.openAddListModal()
   }
 }
