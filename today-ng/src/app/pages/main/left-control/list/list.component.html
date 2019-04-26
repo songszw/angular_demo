@@ -1,0 +1,20 @@
+<ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+  <li nz-menu-item>
+    <span>
+      <i nz-icon nzType="home" nzTheme="outline"></i>
+      <span class="nav-text">Today</span>
+    </span>
+  </li>
+  <li nz-menu-item>
+    <span>
+      <i nz-icon nzType="schedule" nzTheme="outline"></i>
+      <span class="nav-text">TODO</span>
+    </span>
+  </li>
+</ul>
+
+<nz-modal [nzWidth]='420' [(nzVisible)]="isVisible" nzTitle="添加新列表" (nzOnCancel)="handleAddCancel()"
+  (nzOnOk)="handleAddOk()">
+  <input nz-input placeholder="列表名称" [(ngModel)]="inputList" />
+
+</nz-modal>

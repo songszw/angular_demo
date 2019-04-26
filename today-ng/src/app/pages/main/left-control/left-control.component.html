@@ -1,0 +1,17 @@
+<div class="logo">
+  <img src="../../../assets/img/default-avatar.png" alt="">
+  <span class="asider_title" *ngIf="!isCollapsed">{{username}} </span>
+  <div class="asider_btn" *ngIf="!isCollapsed">
+    <i nz-icon nzType="setting" nzTheme="outline"></i>
+  </div>
+  <div class="asider_btn" *ngIf="!isCollapsed">
+    <i nz-icon nzType="schedule" nzTheme="outline"></i>
+  </div>
+</div>
+<app-list [isCollapsed]='isCollapsed'></app-list>
+
+<div class="add_list_wrapper">
+  <button class="add_list_btn" nz-button nzType="dashed" (click)="handleOpenAddList()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>
+    <span *ngIf="!isCollapsed">新列表</span></button>
+</div>

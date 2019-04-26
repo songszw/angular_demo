@@ -1,26 +1,6 @@
 <nz-layout>
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzWidth]="200" [nzReverseArrow]="isReverseArrow">
-    <div class="logo">asdf <br>asdfad</div>
-    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu>
-        <span title><i nz-icon type="user"></i><span class="nav-text">User</span></span>
-        <ul>
-          <li nz-menu-item>Tom</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul>
-      </li>
-      <li nz-submenu>
-        <span title><i nz-icon type="team"></i><span class="nav-text">Team</span></span>
-        <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
-        </ul>
-      </li>
-      <li nz-menu-item>
-        <span><i nz-icon type="file"></i><span class="nav-text">File</span></span>
-      </li>
-    </ul>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzWidth]="260" [nzReverseArrow]="isReverseArrow">
+    <app-left-control [isCollapsed]='isCollapsed'></app-left-control>
   </nz-sider>
   <nz-layout style="padding:0 24px 24px">
     <nz-content style="background:#fff; padding: 24px; min-height: 280px;">Content</nz-content>
