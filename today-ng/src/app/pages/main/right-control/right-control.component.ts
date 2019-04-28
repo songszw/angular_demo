@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { TodoComponent } from './todo/todo.component'
 @Component({
   selector: 'app-right-control',
   templateUrl: './right-control.component.html',
   styleUrls: ['./right-control.component.styl']
 })
 export class RightControlComponent implements OnInit {
+  @ViewChild(TodoComponent) public todoList: TodoComponent
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {}
+  add(title: string) {
+    this.todoList.add(title)
   }
-
 }

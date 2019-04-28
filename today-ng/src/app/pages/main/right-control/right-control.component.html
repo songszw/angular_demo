@@ -6,6 +6,6 @@
     <app-todo></app-todo>
   </nz-content>
   <div class="quick-add-wrapper">
-    <app-quick-add></app-quick-add>
+    <app-quick-add (add)="add($event)"></app-quick-add>
   </div>
 </nz-layout>
