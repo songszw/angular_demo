@@ -1,0 +1,18 @@
+<div class="header-container">
+  <img src="assets/img/blog_logo.jpg" alt="" class="header_logo">
+  <nz-dropdown (nzVisibleChange)="change($event)" class="header-setting">
+    <a nz-dropdown><i nz-icon nzType="setting" nzTheme="outline"></i> 设置 </a>
+    <ul nz-menu>
+      <li nz-menu-item>隐藏已完成</li>
+      <li nz-submenu>
+        <span title>排序</span>
+        <ul>
+          <li nz-menu-item>名称</li>
+          <li nz-menu-item>计划时间</li>
+          <li nz-menu-item>截止时间</li>
+          <li nz-menu-item>完成状态</li>
+        </ul>
+      </li>
+    </ul>
+  </nz-dropdown>
+</div>
