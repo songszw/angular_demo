@@ -1,11 +1,11 @@
 <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
-  <li nz-menu-item>
+  <li nz-menu-item [nzSelected]="currentListUuid === 'today'" (click)="click('today')">
     <span>
       <i nz-icon nzType="home" nzTheme="outline"></i>
       <span class="nav-text">Today</span>
     </span>
   </li>
-  <li nz-menu-item>
+  <li nz-menu-item (click)="click('todo')" [nzSelected]="currentListUuid === 'todo'">
     <span>
       <i nz-icon nzType="schedule" nzTheme="outline"></i>
       <span class="nav-text">TODO</span>
