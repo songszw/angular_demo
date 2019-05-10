@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { UserlistService } from '../../services/userlist.service'
 
 @Component({
   selector: 'app-list',
@@ -6,131 +7,55 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./list.component.styl']
 })
 export class ListComponent implements OnInit {
-  isAllDisplayDataChecked = false
-  isOperating = false
-  isIndeterminate = false
-  listOfDisplayData: any = []
-
-  listOfAllData: any = [
-    {
-      id: '1',
-      name: 'Johon Brown',
-      age: 32,
-      address: 'New Yourk No. 1 Lake Park'
-    },
-    {
-      id: '2',
-      name: 'Steve Jobs',
-      age: 40,
-      address: 'United States'
-    },
-    {
-      id: '3',
-      name: 'Harry Potter',
-      age: 28,
-      address: 'United Kingdom'
-    },
-
-    {
-      id: '1',
-      name: 'Johon Brown',
-      age: 32,
-      address: 'New Yourk No. 1 Lake Park'
-    },
-    {
-      id: '2',
-      name: 'Steve Jobs',
-      age: 40,
-      address: 'United States'
-    },
-    {
-      id: '3',
-      name: 'Harry Potter',
-      age: 28,
-      address: 'United Kingdom'
-    },
-
-    {
-      id: '1',
-      name: 'Johon Brown',
-      age: 32,
-      address: 'New Yourk No. 1 Lake Park'
-    },
-    {
-      id: '2',
-      name: 'Steve Jobs',
-      age: 40,
-      address: 'United States'
-    },
-    {
-      id: '3',
-      name: 'Harry Potter',
-      age: 28,
-      address: 'United Kingdom'
-    },
-
-    {
-      id: '1',
-      name: 'Johon Brown',
-      age: 32,
-      address: 'New Yourk No. 1 Lake Park'
-    },
-    {
-      id: '2',
-      name: 'Steve Jobs',
-      age: 40,
-      address: 'United States'
-    },
-    {
-      id: '3',
-      name: 'Harry Potter',
-      age: 28,
-      address: 'United Kingdom'
-    }
+  pageIndex = 1
+  pageSize = 10
+  total = 1
+  listOfData = []
+  loading = true
+  sortValue: string | null = null
+  sortKey: string | null = null
+  filterGender = [
+    { text: 'male', value: 'male' },
+    { text: 'female', value: 'female' }
   ]
-  mapOfCheckedId: { [key: string]: boolean } = {}
-  numberOfChecked = 0
+  searchGenderList: string[] = []
 
-  currentPageDataChange($event: any): void {
-    this.listOfDisplayData = $event
-    this.refreshStatus()
-  }
-  refreshStatus(): void {
-    this.isAllDisplayDataChecked = this.listOfDisplayData
-      .filter(item => !item.disabled)
-      .every(item => this.mapOfCheckedId[item.id])
-    this.isIndeterminate =
-      this.listOfDisplayData
-        .filter(item => !item.disabled)
-        .some(item => this.mapOfCheckedId[item.id]) &&
-      !this.isAllDisplayDataChecked
-    this.numberOfChecked = this.listOfAllData.filter(
-      item => this.mapOfCheckedId[item.id]
-    ).length
-  }
-  checkAll(value: boolean): void {
-    this.listOfDisplayData
-      .filter(item => !item.disabled)
-      .forEach(item => (this.mapOfCheckedId[item.id] = value))
-    this.refreshStatus()
+  sort(sort: { key: string; value: string }): void {
+    this.sortKey = sort.key
+    this.sortValue = sort.value
+    this.searchData()
   }
 
-  operateData(): void {
-    this.isOperating = true
-    setTimeout(() => {
-      this.listOfAllData.forEach(item => (this.mapOfCheckedId[item.id] = false))
-      this.refreshStatus()
-      this.isOperating = false
-    }, 1000)
+  constructor(private randomUserService: UserlistService) {}
+
+  searchData(reset: boolean = false): void {
+    if (reset) {
+      this.pageIndex = 1
+    }
+    this.loading = true
+    this.randomUserService
+      .getUsers(
+        this.pageIndex,
+        this.pageSize,
+        this.sortKey!,
+        this.sortValue!,
+        this.searchGenderList
+      )
+      .subscribe((data: any) => {
+        this.loading = false
+        this.total = 200
+        this.listOfData = data.results
+      })
   }
+
+  updateFilter(value: string[]): void {
+    this.searchGenderList = value
+    this.searchData(true)
+  }
+
   ngOnInit(): void {
-    // for (let i = 0; i < 100; i++) {
-    //   this.listOfAllData.push({
-    //     id: i,
-    //     name: `Edward King ${i}`,
-    //     age: 32,
-    //     address: `London, Park Lane no. ${i}`
-    //   })
-    // }
+    console.log('aaa')
+
+    this.searchData()
   }
 }
