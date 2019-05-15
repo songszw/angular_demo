@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Urls } from './url'
 
@@ -29,12 +29,26 @@ export class UserlistService {
   //   })
   // }
 
-  getBillList(pageIndex: number = 1): Observable<{}> {
-    let params = new HttpParams().append('pageNum', `${pageIndex}`)
+  getBillList(pageIndex: number = 1, pageSize: number = 3): Observable<{}> {
+    let params = new HttpParams()
+      .append('pageNum', `${pageIndex}`)
+      .append('pageSoze', `${pageSize}`)
 
-    return this.http.post(`${this.urls.getResourceList}`, {
-      params
-    })
+    return this.http.post(`${this.urls.getResourceList}`, params)
+  }
+  getFeedback(pageIndex: number = 1, pageSize: number = 3): Observable<{}> {
+    let params = new HttpParams()
+      .append('pageNum', `${pageIndex}`)
+      .append('pageSize', `${pageSize}`)
+    return this.http.get(`${this.urls.getFeedback}`, { params })
+  }
+  getBill(pageIndex: number = 1, pageSize: number = 3): Observable<{}> {
+    console.log(pageIndex, pageSize)
+    let params = new HttpParams()
+      .append('pageNum', `${pageIndex}`)
+      .append('pageSize', `${pageSize}`)
+    // return this.http.post(`${this.urls.getResourceList}`, { params })
+    return this.http.post(`${this.urls.getResourceList}`, params)
   }
 
   constructor(private http: HttpClient) {}

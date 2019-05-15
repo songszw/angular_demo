@@ -7,6 +7,8 @@ import { TodoService } from '../../../../services/todo/todo.service'
 import { ListService } from '../../../../services/list/list.service'
 import { floorToDate, getTodayTime } from '../../../../../utils/time'
 import { RankBy } from '../../../../../domain/type'
+import { Router } from '@angular/router'
+
 const rankerGenerator = (type: RankBy = 'title'): any => {
   if (type === 'completeFlag') {
     return (t1: Todo, t2: Todo) => t1.completedFlag && !t2.completedFlag
@@ -30,7 +32,8 @@ export class TodoComponent implements OnInit, OnDestroy {
   constructor(
     private listService: ListService,
     private todoService: TodoService,
-    private dropdownService: NzDropdownService
+    private dropdownService: NzDropdownService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -75,6 +78,10 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
   add(title: string): void {
     this.todoService.add(title)
+  }
+
+  click(uuid: string): void {
+    this.router.navigateByUrl(`/main/${uuid}`)
   }
 
   contextMenu(

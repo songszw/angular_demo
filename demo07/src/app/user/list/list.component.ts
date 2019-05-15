@@ -8,7 +8,7 @@ import { UserlistService } from '../../services/userlist.service'
 })
 export class ListComponent implements OnInit {
   pageIndex: number = 1
-  pageSize: number = 20
+  pageSize: number = 3
   total = 1
   listOfData = []
   // loading = true
@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
     // this.loading = true
 
     this.randomUserService
-      .getBillList(this.pageIndex)
+      .getBillList(this.pageIndex, this.pageSize)
       .subscribe((data: any) => {
         let datalist = data.data.factoryList
         this.total = datalist.total
@@ -54,7 +54,29 @@ export class ListComponent implements OnInit {
     //     this.listOfData = data.results
     //   })
   }
-
+  // getFeedback(reset: boolean = false): void {
+  //   if (reset) {
+  //     this.pageIndex = 1
+  //   }
+  //   this.randomUserService
+  //     .getFeedback(this.pageIndex, this.pageSize)
+  //     .subscribe((data: any) => {
+  //       console.log(data)
+  //       this.listOfData = data.data.result
+  //       this.total = data.data.total
+  //     })
+  //   // this.loading = true
+  // }
+  // getBill(reset: boolean = false): void {
+  //   if (reset) {
+  //     this.pageIndex = 1
+  //   }
+  //   this.randomUserService
+  //     .getBill(this.pageIndex, this.pageSize)
+  //     .subscribe((data: any) => {
+  //       console.log(data)
+  //     })
+  // }
   // updateFilter(value: string[]): void {
   //   // this.searchGenderList = value
   //   this.searchData(true)
@@ -62,5 +84,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchData()
+    // this.getFeedback()
+    // this.getBill()
   }
 }
