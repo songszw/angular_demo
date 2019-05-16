@@ -1,0 +1,19 @@
+<div class="logo">V货帮物流管理平台</div>
+<ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+  <li nz-menu-item>物流管理</li>
+  <li nz-menu-item>系统设置</li>
+  <div class="userInfo">
+    <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
+    <nz-dropdown [nzTrigger]="'click'" [ngClass]="{'userselect': true}">
+      <a nz-dropdown>你好，wahahh ! <i nz-icon type="down"></i> </a>
+      <ul nz-menu nzSelectable>
+        <li nz-menu-item>
+          <a><i nz-icon nzType="user" nzTheme="outline"></i> 个人信息</a>
+        </li>
+        <li nz-menu-item>
+          <a><i nz-icon nzType="safety" nzTheme="outline"></i> 修改密码 </a> </li>
+      </ul>
+    </nz-dropdown> <span class="logout">退出</span>
+  </div>
+
+</ul>

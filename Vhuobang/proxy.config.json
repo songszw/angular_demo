@@ -1,0 +1,10 @@
+{
+  "/test": {
+    "target": "https://xiaoyu.jsh178.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/test": ""
+    }
+  }
+}
