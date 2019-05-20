@@ -1,66 +1,65 @@
- <!-- <nz-breadcrumb style="margin:16px 0;">
-   <nz-breadcrumb-item>Home</nz-breadcrumb-item>
-   <nz-breadcrumb-item>List</nz-breadcrumb-item>
-   <nz-breadcrumb-item>App</nz-breadcrumb-item>
- </nz-breadcrumb> -->
- <nz-content [ngClass]="{'primary-source': true}">
-   <div nz-row class="sourcelist">
-     <div nz-col nzSpan='6'>
-       <div nz-row>
-         <div nz-col nzSpan='8' class="label">公司名称</div>
-         <div nz-col nzSpan='16'>
-           <input nz-input placeholder="请输入公司名称" [(ngModel)]="companyName" nzSize="default" />
-         </div>
-       </div>
-     </div>
-     <div nz-col nzSpan='6'>
-       <div nz-row>
-         <div nz-col nzSpan='8' class="label">出发地</div>
-         <div nz-col nzSpan='16'>
-           <nz-cascader [nzOptions]="options" [(ngModel)]="fromAddress" (ngModelChange)="changeFromAddress($event)">
-           </nz-cascader>
-         </div>
-       </div>
-     </div>
-     <div nz-col nzSpan='6'>
-       <div nz-row>
-         <div nz-col nzSpan="8" class="label">目的地</div>
-         <div nz-col nzSpan="16">
-           <nz-cascader [nzOptions]="options" [(ngModel)]="toAddress" (ngModelChange)="changeToAddress($event)">
-           </nz-cascader>
-         </div>
-       </div>
-     </div>
-     <div nz-col nzSpan='6' class="searchbtn">
-       <button nz-button nzType="default" (click)="handleSearchClick()">查询</button>
-     </div>
-   </div>
-   <nz-table>
-     <thead>
-       <tr>
-         <th>序号</th>
-         <th>货源编号</th>
-         <th>公司名称</th>
-         <th>公司电话</th>
-         <th>出发地</th>
-         <th>目的地</th>
-         <th>原料</th>
-         <th>发布时间</th>
-         <th>备注</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr>
-         <td>1</td>
-         <td>20180622100902303</td>
-         <td>北京聚石慧科技有限公司</td>
-         <td>18700218799</td>
-         <td>河北省,保定市</td>
-         <td>内蒙古,鄂尔多斯市,乌兰布统</td>
-         <td>溶剂油1500号</td>
-         <td>2018-08-01</td>
-         <td>罐体</td>
-       </tr>
-     </tbody>
-   </nz-table>
- </nz-content>
+<nz-content [ngClass]="{'primary-source': true}">
+  <div nz-row class="sourcelist">
+    <div nz-col nzSpan='6'>
+      <div nz-row>
+        <div nz-col nzSpan='8' class="label">公司名称</div>
+        <div nz-col nzSpan='16'>
+          <input nz-input placeholder="请输入公司名称" [(ngModel)]="companyName" nzSize="default" />
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan='6'>
+      <div nz-row>
+        <div nz-col nzSpan='8' class="label">出发地</div>
+        <div nz-col nzSpan='16'>
+          <nz-cascader [nzOptions]="options" [(ngModel)]="fromAddress" (ngModelChange)="changeFromAddress($event)">
+          </nz-cascader>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan='6'>
+      <div nz-row>
+        <div nz-col nzSpan="8" class="label">目的地</div>
+        <div nz-col nzSpan="16">
+          <nz-cascader [nzOptions]="options" [(ngModel)]="toAddress" (ngModelChange)="changeToAddress($event)">
+          </nz-cascader>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan='6' class="searchbtn">
+      <button nz-button nzType="default" (click)="handleSearchClick()">查询</button>
+    </div>
+  </div>
+  <nz-table #ajaxTable [nzData]='listOfData' [nzFrontPagination]="false" [nzShowTotal]='totalTemplate' [nzTotal]='total'
+    [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" [(nzPageIndex)]='pageIndex'
+    (nzPageIndexChange)='primaryData()'>
+    <ng-template #totalTemplate let-total> 共 {{ total }} 条 </ng-template>
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>货源编号</th>
+        <th>公司名称</th>
+        <th>公司电话</th>
+        <th>出发地</th>
+        <th>目的地</th>
+        <th>原料</th>
+        <th>发布时间</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ajaxTable.data; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.companyId}}</td>
+        <td>{{item.companyName}}</td>
+        <td>{{item.companyPhone}}</td>
+        <td>{{item.startingAddressName}}</td>
+        <td>{{item.endAddressName}}</td>
+        <td>{{item.goodsName}}</td>
+        <td>{{item.updateDate}}</td>
+        <td>{{item.remark}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+</nz-content>

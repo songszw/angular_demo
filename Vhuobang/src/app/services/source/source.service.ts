@@ -9,12 +9,12 @@ import { Urls } from '../url'
 export class SourceService {
   private urls = Urls
   getPrimaryData(
-    companyId: string = '',
+    companyName: string = '',
     startingAddressName: string = '',
     endAddressName: string = ''
   ): Observable<{}> {
     let params = new HttpParams()
-      .append('companyId', `${companyId}`)
+      .append('companyName', `${companyName}`)
       .append('startingAddressName', `${startingAddressName}`)
       .append('endAddressName', `${endAddressName}`)
 

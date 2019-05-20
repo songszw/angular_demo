@@ -53,18 +53,27 @@ export class PrimarySourceComponent implements OnInit {
   from: string = ''
   to: string = ''
   companyName: string = ''
-  pageIndex = 1
-  pageSize = 20
-  total = 1
+  pageIndex: number = 1
+  pageSize: number = 20
+  total: number = 1
   listOfData = []
 
   constructor(private primarySource: SourceService) {}
 
   primaryData(): void {
+    console.log('aaa')
     this.primarySource
       .getPrimaryData(this.companyName, this.from, this.to)
       .subscribe((data: any) => {
-        console.log(data)
+        if (data.code === 0) {
+          console.log(data)
+          let desc = data.data.pagination
+          this.pageIndex = desc.pageNum
+          this.pageSize = desc.pageSize
+          this.total = desc.total
+          this.listOfData = desc.result
+          console.log(this.listOfData)
+        }
       })
   }
   handleSearchClick() {
@@ -76,6 +85,7 @@ export class PrimarySourceComponent implements OnInit {
       'toAddress:',
       this.to
     )
+    this.primaryData()
   }
   changeFromAddress(values: any): void {
     this.from = ''
