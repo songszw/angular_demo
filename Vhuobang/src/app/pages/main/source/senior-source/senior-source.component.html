@@ -1,3 +1,25 @@
-<p>
-  senior-source works!
-</p>
+<div class="senior-source">
+  <ul nz-menu [nzMode]="'horizontal'">
+    <li nz-menu-item>全部货源</li>
+    <li nz-menu-item>待匹配</li>
+    <li nz-menu-item>匹配中</li>
+    <li nz-menu-item>匹配完成</li>
+    <li nz-menu-item>已失效</li>
+  </ul>
+  <div col-row class="searchlist">
+    <div nz-col nzSpan='21'>
+      <div nz-col nzSpan="7">
+        <div nz-row>
+          <div nz-col nzSpan="8" class="label">原料</div>
+          <div nz-col nzSpan="16">
+            <input nz-input placeholder="请输入原料名称" [(ngModel)]="material">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan='3' class="searchbtn">
+      <button nz-button nzType="default" (click)="handleSearchClick()">查询</button>
+    </div>
+  </div>
+
+</div>
