@@ -8,6 +8,7 @@ import { Urls } from '../url'
 })
 export class SourceService {
   private urls = Urls
+  // 获取初级货源信息
   getPrimaryData(
     companyName: string = '',
     startingAddressName: string = '',

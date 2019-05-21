@@ -12,7 +12,9 @@
       <div nz-row>
         <div nz-col nzSpan='8' class="label">出发地</div>
         <div nz-col nzSpan='16'>
-          <nz-cascader [nzOptions]="options" [(ngModel)]="fromAddress" (ngModelChange)="changeFromAddress($event)">
+          <!-- <nz-cascader [nzOptions]="options" [(ngModel)]="fromAddress" (ngModelChange)="changeFromAddress($event)">
+          </nz-cascader> -->
+          <nz-cascader [(ngModel)]="fromAddress" [nzLoadData]="loadData" (ngModelChange)="onChanges($event)">
           </nz-cascader>
         </div>
       </div>

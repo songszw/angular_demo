@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { registerLocaleData } from '@angular/common'
 import zh from '@angular/common/locales/zh'
-import { HeaderComponent } from './header/header.component'
-import { SiderComponent } from './sider/sider.component'
-import { SourceComponent } from './source/source.component'
-import { PrimarySourceComponent } from './source/primary-source/primary-source.component'
-import { SeniorSourceComponent } from './source/senior-source/senior-source.component'
+import { HeaderComponent } from './pages/main/header/header.component'
+import { SiderComponent } from './pages/main/sider/sider.component'
+import { SourceComponent } from './pages/main/source/source.component'
+import { PrimarySourceComponent } from './pages/main/source/primary-source/primary-source.component'
+import { SeniorSourceComponent } from './pages/main/source/senior-source/senior-source.component'
 import { SourceService } from './services/source/source.service'
+import { MainComponent } from './pages/main/main.component'
+import { LoginComponent } from './pages/login/login.component'
 
 registerLocaleData(zh)
 
@@ -25,7 +27,9 @@ registerLocaleData(zh)
     SiderComponent,
     PrimarySourceComponent,
     SeniorSourceComponent,
-    SourceComponent
+    SourceComponent,
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

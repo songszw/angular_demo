@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { SourceService } from '../../services/source/source.service'
+import { SourceService } from '../../../../services/source/source.service'
+import { AreaDataService } from '../../../../services/area_data/area-data.service'
 
 @Component({
   selector: 'app-primary-source',
@@ -56,11 +57,15 @@ export class PrimarySourceComponent implements OnInit {
   pageIndex: number = 1
   pageSize: number = 20
   total: number = 1
-  listOfData = []
+  listOfData: any = []
 
-  constructor(private primarySource: SourceService) {}
+  constructor(
+    private primarySource: SourceService,
+    private areaData: AreaDataService
+  ) {}
 
   primaryData(): void {
+    // 获取初级货源
     console.log('aaa')
     this.primarySource
       .getPrimaryData(this.companyName, this.from, this.to)
@@ -77,6 +82,7 @@ export class PrimarySourceComponent implements OnInit {
       })
   }
   handleSearchClick() {
+    //点击查询
     console.log(
       'companyname:',
       this.companyName,
@@ -103,5 +109,33 @@ export class PrimarySourceComponent implements OnInit {
   }
   ngOnInit(): void {
     this.primaryData()
+  }
+  onChanges(values: any): void {
+    console.log('aaabbb', values)
+  }
+
+  loadData(node: any, index: number): PromiseLike<any> {
+    console.log('aaa', index)
+
+    // this.areaData.getProviceData().subscribe((data: any) => {
+    //   console.log('data:', data)
+    // })
+    return new Promise(resolve => {
+      setTimeout(() => {
+        if (index < 0) {
+          // console.log(this)
+          // this.areaData.getProviceData().subscribe((data: any) => {
+          //   console.log(data)
+          // })
+          // if index less than 0 it is root node
+          // node.children = provinces
+        } else if (index === 0) {
+          // node.children = cities[node.value]
+        } else {
+          // node.children = scenicspots[node.value]
+        }
+        resolve()
+      }, 1000)
+    })
   }
 }
