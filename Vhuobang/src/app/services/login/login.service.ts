@@ -15,5 +15,9 @@ export class LoginService {
       .append('loginUserPassword', `${password}`)
     return this.http.post(`${this.urls.login}`, params)
   }
+  LogOutService() {
+    let params = new HttpParams()
+    return this.http.post(`${this.urls.logout}`, params)
+  }
   constructor(private http: HttpClient) {}
 }
