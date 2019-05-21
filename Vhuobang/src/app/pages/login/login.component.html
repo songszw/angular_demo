@@ -1,3 +1,19 @@
-<p>
-  login works!
-</p>
+<div class="full-screen page-content">
+  <div class="wrapper">
+    <img class="logo-img" src="../../../assets/img/logo.png" alt="">
+    <div class="text-wrapper">
+      <h1 class="title-text">
+        Vhuobang
+      </h1>
+    </div>
+
+    <input nz-input placeholder="请输入用户名" [(ngModel)]="username">
+    <input nz-input placeholder="请输入密码" type="password" [(ngModel)]="password">
+    <button nz-button [nzType]="'primary'" (click)="login()">
+      登录
+    </button>
+    <div class="copy-right">
+      Copyright © 2018 jet song
+    </div>
+  </div>
+</div>

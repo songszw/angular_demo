@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd'
 import { FormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { registerLocaleData } from '@angular/common'
 import zh from '@angular/common/locales/zh'
@@ -14,9 +14,11 @@ import { SiderComponent } from './pages/main/sider/sider.component'
 import { SourceComponent } from './pages/main/source/source.component'
 import { PrimarySourceComponent } from './pages/main/source/primary-source/primary-source.component'
 import { SeniorSourceComponent } from './pages/main/source/senior-source/senior-source.component'
-import { SourceService } from './services/source/source.service'
+
 import { MainComponent } from './pages/main/main.component'
 import { LoginComponent } from './pages/login/login.component'
+import { SourceService } from './services/source/source.service'
+import { MyInterceptor } from './services/InterceptorService'
 
 registerLocaleData(zh)
 
@@ -39,7 +41,11 @@ registerLocaleData(zh)
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }, SourceService],
+  providers: [
+    { provide: NZ_I18N, useValue: zh_CN },
+    SourceService,
+    { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
