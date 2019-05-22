@@ -7,19 +7,147 @@
     <li nz-menu-item>已失效</li>
   </ul>
   <div col-row class="searchlist">
-    <div nz-col nzSpan='21'>
-      <div nz-col nzSpan="7">
+    <div nz-col nzSpan="21">
+      <div nz-col nzSpan="7" class="searchItem">
         <div nz-row>
           <div nz-col nzSpan="8" class="label">原料</div>
           <div nz-col nzSpan="16">
-            <input nz-input placeholder="请输入原料名称" [(ngModel)]="material">
+            <input nz-input placeholder="请输入原料名称" [(ngModel)]="material" />
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="7" class="searchItem">
+        <div nz-row>
+          <div nz-col nzSpan="8" class="label">开始时间</div>
+          <div nz-col nzSpan="16">
+            <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startValue"></nz-date-picker>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="7" class="searchItem">
+        <div nz-row>
+          <div nz-col nzSpan="8" class="label">结束时间</div>
+          <div nz-col nzSpan="16">
+            <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="endValue"></nz-date-picker>
           </div>
         </div>
       </div>
     </div>
-    <div nz-col nzSpan='3' class="searchbtn">
-      <button nz-button nzType="default" (click)="handleSearchClick()">查询</button>
+    <div nz-col nzSpan="3" class="searchbtn">
+      <button nz-button nzType="default" (click)="handleSearchClick()">
+        查询
+      </button>
     </div>
+  </div>
+  <div class="senior_content">
+
+    <nz-table class="senior_table" #ajaxTable [nzData]="seniorData" [nzFrontPagination]="false"
+      [nzShowTotal]='totalTemplate' [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+      (nzPageIndexChange)="getSeniorList()">
+      <ng-template #totalTemplate let-total> 共 {{ total }} 条 </ng-template>
+      <thead>
+        <tr>
+          <th nzWidth="60px">序号</th>
+          <th>货源编号</th>
+          <th>货主信息</th>
+          <th>位置信息</th>
+          <th>货源信息</th>
+          <th>匹配详情</th>
+          <th nzWidth="80px" nzAlign="center">状态</th>
+          <th nzAlign="center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of ajaxTable.data; let i=index">
+          <td nzAlign="center">{{i+1}}</td>
+          <td>
+            <div>
+              {{item.goodsNum}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <span>公司名称：</span>
+              {{item.userCompanyName}}
+            </div>
+            <div>
+              <span>联系人姓名：</span>
+              {{item.userCompanyLinkman}}
+            </div>
+            <div>
+              <span>联系电话：</span>
+              {{item.userCompanyIphone}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <span>出发地：</span>
+              {{item.departLand}}至{{item.departLandDetails}}
+            </div>
+            <div>
+              <span>目的地：</span>
+              {{item.destina}}至{{item.destinaDetails}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <span>期望运费：</span>
+              {{item.expectFreight}}元/吨
+            </div>
+            <div>
+              <span>炼厂名称：</span>
+              {{item.refineryName}}
+            </div>
+            <div>
+              <span>原料：</span>
+              {{item.material}}
+            </div>
+            <div>
+              <span>重量：</span>
+              {{item.totalWeight}}吨
+            </div>
+            <div>
+              <span>罐体：</span>
+              <p class="dib" *ngIf="item.tankBody==='0'">铝罐</p>
+              <p class="dib" *ngIf="item.tankBody==='1'">铁罐</p>
+              <p class="dib" *ngIf="item.tankBody==='2'">钢罐</p>
+              <p class="dib" *ngIf="item.tankBody==='3'">铝合金</p>
+              <p class="dib" *ngIf="item.tankBody==='4'">不限</p>
+            </div>
+            <div>
+              <span>货源有效期：</span>
+              {{item.startTimestr}} 至 {{item.endTimestr}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <span>已匹配重量：</span>
+              {{item.matchWeight}}吨
+            </div>
+            <div>
+              <span>已匹配车辆：</span>
+              {{item.matchVehicle}}辆
+            </div>
+            <div>
+              <span>已谈成重量：</span>
+              {{item.talkWeight}}吨
+            </div>
+            <div>
+              <span>已谈成车辆：</span>
+              {{item.talkVehicle}}辆
+            </div>
+          </td>
+          <td nzAlign="center">
+            待匹配
+          </td>
+          <td>
+            <button nz-button nzType="default" (click)="handleSearchClick()">
+              查询
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
   </div>
 
 </div>

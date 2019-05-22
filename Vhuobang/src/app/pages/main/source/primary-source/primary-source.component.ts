@@ -56,7 +56,7 @@ export class PrimarySourceComponent implements OnInit {
   pageIndex: number = 1
   pageSize: number = 20
   total: number = 1
-  listOfData: any = []
+  listOfData = []
   loading = true
 
   constructor(private primarySource: SourceService) {}
@@ -79,7 +79,7 @@ export class PrimarySourceComponent implements OnInit {
           this.pageSize = desc.pageSize
           this.total = desc.total
           this.listOfData = desc.result
-          console.log(this.listOfData)
+          console.log(typeof this.listOfData)
         }
       })
   }

@@ -1,13 +1,34 @@
+@import '../../../../../assets/css/common'
 .senior-source
   min-height 200px
   .searchlist
-    padding 10 20px
-    background #0f0
+    padding 0 20px
+    overflow hidden
+    .searchItem
+      margin-top 10px
     .label
       line-height 32px
       text-align center
     .searchbtn
       button
+        margin-top 10px
         width 78px
         height 30px
         float right
+  .senior_content
+    padding 10px 20px
+    .senior_table
+      background #fff
+      td
+        color $textColor_gray
+        button
+          width 78px
+          height 30px
+        .dib
+          dib()
+          height 0
+        span
+          color $labelColor
+.ant-table-tbody > tr > td
+  vertical-align top
+  font-size 12px

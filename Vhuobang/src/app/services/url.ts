@@ -15,5 +15,7 @@ export const Urls = {
   logout: host + '/logout.do?t=' + Date.now(),
   // ----------货源与车源----------
   // 初级货源
-  getPrimarySource: host + '/admin/quickCargo/viewCargo.do?t=' + Date.now()
+  getPrimarySource: host + '/admin/quickCargo/viewCargo.do?t=' + Date.now(),
+  // 高级货源
+  getSeniorSource: host + '/VhbGoodsSenior/goodsSeniorList.do?t=' + Date.now()
 }

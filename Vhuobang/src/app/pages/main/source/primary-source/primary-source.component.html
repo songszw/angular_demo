@@ -32,7 +32,7 @@
   </div>
   <nz-table #ajaxTable [nzData]='listOfData' [nzLoading]="loading" [nzFrontPagination]="false"
     [nzShowTotal]='totalTemplate' [nzTotal]='total' [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
-    [(nzPageIndex)]='pageIndex' (nzPageIndexChange)='primaryData()'>
+    (nzPageIndexChange)='primaryData()'>
     <ng-template #totalTemplate let-total> 共 {{ total }} 条 </ng-template>
     <thead>
       <tr>
