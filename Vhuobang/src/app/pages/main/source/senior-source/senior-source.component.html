@@ -1,10 +1,12 @@
 <div class="senior-source">
   <ul nz-menu [nzMode]="'horizontal'">
-    <li nz-menu-item>全部货源</li>
-    <li nz-menu-item>待匹配</li>
+    <li nz-menu-item *ngFor="let item of sourceStatus" [nzSelected]='item.value===goodsState?true:false'
+      (click)="getMenuItem(item.value)">{{item.label}}
+    </li>
+    <!-- <li nz-menu-item>待匹配</li>
     <li nz-menu-item>匹配中</li>
     <li nz-menu-item>匹配完成</li>
-    <li nz-menu-item>已失效</li>
+    <li nz-menu-item>已失效</li> -->
   </ul>
   <div col-row class="searchlist">
     <div nz-col nzSpan="21">
@@ -20,7 +22,8 @@
         <div nz-row>
           <div nz-col nzSpan="8" class="label">开始时间</div>
           <div nz-col nzSpan="16">
-            <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="startValue"></nz-date-picker>
+            <nz-date-picker (ngModelChange)="startDateChange($event)" [nzFormat]="dateFormat" [(ngModel)]="startDate">
+            </nz-date-picker>
           </div>
         </div>
       </div>
@@ -28,7 +31,8 @@
         <div nz-row>
           <div nz-col nzSpan="8" class="label">结束时间</div>
           <div nz-col nzSpan="16">
-            <nz-date-picker [nzFormat]="dateFormat" [(ngModel)]="endValue"></nz-date-picker>
+            <nz-date-picker (ngModelChange)="endDateChange($event)" [nzFormat]="dateFormat" [(ngModel)]="endDate">
+            </nz-date-picker>
           </div>
         </div>
       </div>
@@ -40,9 +44,8 @@
     </div>
   </div>
   <div class="senior_content">
-
     <nz-table class="senior_table" #ajaxTable [nzData]="seniorData" [nzFrontPagination]="false"
-      [nzShowTotal]='totalTemplate' [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+      [nzShowTotal]="totalTemplate" [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
       (nzPageIndexChange)="getSeniorList()">
       <ng-template #totalTemplate let-total> 共 {{ total }} 条 </ng-template>
       <thead>
@@ -58,83 +61,83 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of ajaxTable.data; let i=index">
-          <td nzAlign="center">{{i+1}}</td>
+        <tr *ngFor="let item of ajaxTable.data; let i = index">
+          <td nzAlign="center">{{ i + 1 }}</td>
           <td>
-            <div>
-              {{item.goodsNum}}
+            <div class="goodsNum">
+              {{ item.goodsNum }}
             </div>
           </td>
           <td>
             <div>
               <span>公司名称：</span>
-              {{item.userCompanyName}}
+              {{ item.userCompanyName }}
             </div>
             <div>
               <span>联系人姓名：</span>
-              {{item.userCompanyLinkman}}
+              {{ item.userCompanyLinkman }}
             </div>
             <div>
               <span>联系电话：</span>
-              {{item.userCompanyIphone}}
+              {{ item.userCompanyIphone }}
             </div>
           </td>
           <td>
             <div>
               <span>出发地：</span>
-              {{item.departLand}}至{{item.departLandDetails}}
+              {{ item.departLand }}至{{ item.departLandDetails }}
             </div>
             <div>
               <span>目的地：</span>
-              {{item.destina}}至{{item.destinaDetails}}
+              {{ item.destina }}至{{ item.destinaDetails }}
             </div>
           </td>
           <td>
             <div>
               <span>期望运费：</span>
-              {{item.expectFreight}}元/吨
+              {{ item.expectFreight }}元/吨
             </div>
             <div>
               <span>炼厂名称：</span>
-              {{item.refineryName}}
+              {{ item.refineryName }}
             </div>
             <div>
               <span>原料：</span>
-              {{item.material}}
+              {{ item.material }}
             </div>
             <div>
               <span>重量：</span>
-              {{item.totalWeight}}吨
+              {{ item.totalWeight }}吨
             </div>
             <div>
               <span>罐体：</span>
-              <p class="dib" *ngIf="item.tankBody==='0'">铝罐</p>
-              <p class="dib" *ngIf="item.tankBody==='1'">铁罐</p>
-              <p class="dib" *ngIf="item.tankBody==='2'">钢罐</p>
-              <p class="dib" *ngIf="item.tankBody==='3'">铝合金</p>
-              <p class="dib" *ngIf="item.tankBody==='4'">不限</p>
+              <p class="dib" *ngIf="item.tankBody === '0'">铝罐</p>
+              <p class="dib" *ngIf="item.tankBody === '1'">铁罐</p>
+              <p class="dib" *ngIf="item.tankBody === '2'">钢罐</p>
+              <p class="dib" *ngIf="item.tankBody === '3'">铝合金</p>
+              <p class="dib" *ngIf="item.tankBody === '4'">不限</p>
             </div>
             <div>
               <span>货源有效期：</span>
-              {{item.startTimestr}} 至 {{item.endTimestr}}
+              {{ item.startTimestr }} 至 {{ item.endTimestr }}
             </div>
           </td>
           <td>
             <div>
               <span>已匹配重量：</span>
-              {{item.matchWeight}}吨
+              {{ item.matchWeight }}吨
             </div>
             <div>
               <span>已匹配车辆：</span>
-              {{item.matchVehicle}}辆
+              {{ item.matchVehicle }}辆
             </div>
             <div>
               <span>已谈成重量：</span>
-              {{item.talkWeight}}吨
+              {{ item.talkWeight }}吨
             </div>
             <div>
               <span>已谈成车辆：</span>
-              {{item.talkVehicle}}辆
+              {{ item.talkVehicle }}辆
             </div>
           </td>
           <td nzAlign="center">
@@ -149,5 +152,4 @@
       </tbody>
     </nz-table>
   </div>
-
 </div>
