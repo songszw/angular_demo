@@ -20,16 +20,16 @@ const routes: Routes = [
         component: SourceComponent,
         children: [
           {
-            path: 'primarySource',
+            path: 'lowsource',
             component: PrimarySourceComponent
           },
           {
-            path: 'seniorSource',
+            path: 'heightSource',
             component: SeniorSourceComponent
           },
           {
             path: '**',
-            redirectTo: 'primarySource'
+            redirectTo: 'lowsource'
           }
         ]
       }

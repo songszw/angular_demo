@@ -13,6 +13,8 @@ export const Urls = {
   login: host + '/login.do?t=' + Date.now(),
   // 登出
   logout: host + '/logout.do?t=' + Date.now(),
+  // 获取菜单列表
+  menuList: host + '/admin/menu/getAllMenuList.do?t=' + Date.now(),
   // ----------货源与车源----------
   // 初级货源
   getPrimarySource: host + '/admin/quickCargo/viewCargo.do?t=' + Date.now(),

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-sider',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sider.component.styl']
 })
 export class SiderComponent implements OnInit {
+  menulist: any = []
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.menulist = JSON.parse(localStorage.getItem('menulist'))
+    // console.log('aaa', this.menulist)
   }
-
 }

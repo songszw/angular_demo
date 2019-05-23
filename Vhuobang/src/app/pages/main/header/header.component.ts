@@ -9,8 +9,10 @@ import { Router } from '@angular/router'
 })
 export class HeaderComponent implements OnInit {
   constructor(private Logout: LoginService, private router: Router) {}
-
-  ngOnInit() {}
+  username: string = ''
+  ngOnInit() {
+    this.username = localStorage.getItem('username')
+  }
   logout() {
     console.log('aaa')
     this.Logout.LogOutService().subscribe((data: any) => {

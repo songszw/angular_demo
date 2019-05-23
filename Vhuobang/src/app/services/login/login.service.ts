@@ -19,5 +19,9 @@ export class LoginService {
     let params = new HttpParams()
     return this.http.post(`${this.urls.logout}`, params)
   }
+  MenuList() {
+    let params = new HttpParams()
+    return this.http.get(`${this.urls.menuList}`, { params })
+  }
   constructor(private http: HttpClient) {}
 }

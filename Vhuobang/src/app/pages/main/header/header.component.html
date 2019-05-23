@@ -5,7 +5,7 @@
   <div class="userInfo">
     <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
     <nz-dropdown [nzTrigger]="'click'" [ngClass]="{'userselect': true}">
-      <a nz-dropdown>你好，wahahh ! <i nz-icon type="down"></i> </a>
+      <a nz-dropdown>你好，{{username}} ! <i nz-icon type="down"></i> </a>
       <ul nz-menu nzSelectable>
         <li nz-menu-item>
           <a><i nz-icon nzType="user" nzTheme="outline"></i> 个人信息</a>
