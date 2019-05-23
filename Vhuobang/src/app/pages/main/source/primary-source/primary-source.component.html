@@ -30,7 +30,7 @@
       <button nz-button nzType="default" (click)="handleSearchClick()">查询</button>
     </div>
   </div>
-  <nz-table #ajaxTable [nzData]='listOfData' [nzLoading]="loading" [nzFrontPagination]="false"
+  <nz-table class="primary_table" #ajaxTable [nzData]='listOfData' [nzLoading]="loading" [nzFrontPagination]="false"
     [nzShowTotal]='totalTemplate' [nzTotal]='total' [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
     (nzPageIndexChange)='primaryData()'>
     <ng-template #totalTemplate let-total> 共 {{ total }} 条 </ng-template>
